@@ -57,11 +57,13 @@ src/
 
 ### Modo claro
 
-Adicione aqui uma imagem da aplicação no tema claro.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fe50087c-c447-45ad-8983-f52295756e12" />
+
 
 ### Modo escuro
 
-Adicione aqui uma imagem da aplicação no tema escuro.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2c2b8a24-fbc1-411d-99e6-fa922d407b26" />
+
 
 ## Aprendizados e destaques técnicos
 
