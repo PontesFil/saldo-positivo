@@ -1,12 +1,15 @@
 {
   "name": "saldo-plus",
+  "homepage": "https://pontesfil.github.io/saldo-positivo",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d .vite-output -r https://github.com/PontesFil/saldo-positivo.git"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -15,6 +18,7 @@
     "recharts": "^3.8.1"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^5.4.19"
   }
 }
