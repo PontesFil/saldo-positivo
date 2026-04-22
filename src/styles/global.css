@@ -134,7 +134,11 @@ select {
   border-radius: 0.8rem;
   color: #475569;
   font-weight: 600;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .dashboard-sidebar__link:hover {
@@ -356,7 +360,11 @@ select {
   border: 1px solid #cbd5e1;
   border-radius: 0.75rem;
   background-color: #ffffff;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .currency-field:hover {
@@ -411,7 +419,11 @@ select {
   border-radius: 0.75rem;
   background-color: #ffffff;
   color: #0f172a;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 input:hover,
@@ -444,7 +456,12 @@ select:focus {
   border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn:hover {

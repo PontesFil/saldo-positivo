@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header';
 import About from './pages/About';
 import Dashboard from './pages/Dashboard';
-import Metas from './pages/Metas/metas';
+import Metas from './pages/MetasPage';
 
 function NotFound() {
   return <h1>Página não encontrada</h1>;

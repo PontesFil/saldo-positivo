@@ -15,7 +15,9 @@ export default function DashboardSidebar({ isCollapsed, onToggle }) {
             type="button"
             onClick={onToggle}
             aria-label={
-              isCollapsed ? 'Expandir navegação lateral' : 'Recolher navegação lateral'
+              isCollapsed
+                ? 'Expandir navegação lateral'
+                : 'Recolher navegação lateral'
             }
           >
             {isCollapsed ? '›' : '‹'}

@@ -61,7 +61,7 @@ src/
   pages/
     About/
     Dashboard/
-    Metas/
+    MetasPage/
   styles/
   utils/
   App.jsx

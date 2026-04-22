@@ -2,3 +2,8 @@ node_modules
 dist
 build
 .vite-output
+public
+src/components/ui
+src/hooks
+src/services
+src/pages/Metas
