@@ -14,7 +14,7 @@ function getGoalProgress(goal) {
   if (!goal.targetAmount) {
     return 0;
   }
-8
+
   return Math.min((goal.currentAmount / goal.targetAmount) * 100, 100);
 }
 
