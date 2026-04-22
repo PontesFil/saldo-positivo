@@ -80,6 +80,19 @@ select {
   color: #111827;
 }
 
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-description {
+  margin: 0;
+  color: #64748b;
+}
+
 .app-header {
   position: sticky;
   top: 0;
@@ -204,6 +217,60 @@ select {
   font-size: 0.95rem;
   font-weight: 600;
   color: #334155;
+}
+
+.currency-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.currency-field:hover {
+  border-color: #94a3b8;
+  background-color: #fcfdff;
+}
+
+.currency-field:focus-within {
+  outline: none;
+  border-color: #60a5fa;
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.currency-prefix {
+  padding-left: 0.9rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.currency-field input {
+  width: 100%;
+  min-height: 44px;
+  padding-left: 0.45rem;
+  border: 0;
+  border-radius: 0 0.75rem 0.75rem 0;
+  background: transparent;
+  box-shadow: none;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.currency-field input:hover,
+.currency-field input:focus {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.currency-field input::-webkit-outer-spin-button,
+.currency-field input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
 }
 
 input,
@@ -385,6 +452,10 @@ select:focus {
   gap: 1rem;
 }
 
+.dashboard-highlight {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
 .filters-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -486,6 +557,108 @@ select:focus {
   min-width: 88px;
 }
 
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.goal-card {
+  padding: 1.25rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e5e7eb;
+  border-radius: 0.9rem;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.05);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.goal-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8e1ec;
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+}
+
+.goal-card--active {
+  border-color: #93c5fd;
+  box-shadow: 0 16px 30px rgba(59, 130, 246, 0.12);
+}
+
+.goal-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.goal-card__title {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.goal-card__label {
+  margin: 0 0 0.45rem;
+  color: #64748b;
+}
+
+.goal-card__amount {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.goal-card__percentage {
+  flex-shrink: 0;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.goal-progress {
+  overflow: hidden;
+  width: 100%;
+  height: 0.8rem;
+  margin-bottom: 0.85rem;
+  border-radius: 999px;
+  background-color: #e5e7eb;
+}
+
+.goal-progress__fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ef4444 0%, #facc15 50%, #22c55e 100%);
+  transition: width 0.25s ease;
+}
+
+.goal-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.goals-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 1rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 0.8rem;
+  background-color: #f8fafc;
+  color: #64748b;
+}
+
 body.dark .dashboard-title,
 body.dark .section-title,
 body.dark .summary-card__value,
@@ -549,7 +722,10 @@ body.dark .summary-card:hover {
 body.dark .summary-card__title,
 body.dark .form-field label,
 body.dark .chart-legend-category,
-body.dark .transaction-category {
+body.dark .transaction-category,
+body.dark .section-description,
+body.dark .goal-card__label,
+body.dark .currency-prefix {
   color: #94a3b8;
 }
 
@@ -572,6 +748,21 @@ body.dark select:hover {
 
 body.dark input:focus,
 body.dark select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
+}
+
+body.dark .currency-field {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+body.dark .currency-field:hover {
+  background-color: #111c2d;
+  border-color: #475569;
+}
+
+body.dark .currency-field:focus-within {
   border-color: #60a5fa;
   box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.18);
 }
@@ -645,7 +836,8 @@ body.dark .btn-delete:hover {
 }
 
 body.dark .chart-empty,
-body.dark .chart-legend-item {
+body.dark .chart-legend-item,
+body.dark .empty-state {
   background-color: #0f172a;
   border-color: #233146;
   color: #cbd5e1;
@@ -660,6 +852,34 @@ body.dark .editing-banner {
   background-color: rgba(250, 204, 21, 0.14);
   border-color: rgba(250, 204, 21, 0.26);
   color: #fde68a;
+}
+
+body.dark .dashboard-highlight,
+body.dark .goal-card {
+  background: linear-gradient(180deg, #182235 0%, #111827 100%);
+  border-color: #273449;
+}
+
+body.dark .goal-card__title,
+body.dark .goal-card__percentage {
+  color: #f8fafc;
+}
+
+body.dark .goal-card__amount {
+  color: #cbd5e1;
+}
+
+body.dark .goal-card--active {
+  border-color: #3b82f6;
+  box-shadow: 0 18px 32px rgba(37, 99, 235, 0.16);
+}
+
+body.dark .goal-card__percentage {
+  background-color: rgba(59, 130, 246, 0.18);
+}
+
+body.dark .goal-progress {
+  background-color: #243244;
 }
 
 @media (max-width: 768px) {
@@ -702,6 +922,10 @@ body.dark .editing-banner {
     flex-direction: column;
   }
 
+  .section-header {
+    align-items: stretch;
+  }
+
   .form-actions .btn {
     width: 100%;
   }
@@ -742,6 +966,10 @@ body.dark .editing-banner {
     flex: 1 1 140px;
     min-width: 0;
   }
+
+  .goal-card__header {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 480px) {
@@ -775,6 +1003,10 @@ body.dark .editing-banner {
   }
 
   .theme-toggle-btn {
+    width: 100%;
+  }
+
+  .section-header .btn {
     width: 100%;
   }
 

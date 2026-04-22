@@ -6,6 +6,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts';
+import formatCategoryLabel from '../../utils/formatCategoryLabel';
 import formatCurrency from '../../utils/formatCurrency';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF4560'];
@@ -32,7 +33,9 @@ export default function ExpensesChart({ data }) {
       <div className="chart-legend">
         {data.map((item) => (
           <div className="chart-legend-item" key={item.category}>
-            <span className="chart-legend-category">{item.category}</span>
+            <span className="chart-legend-category">
+              {formatCategoryLabel(item.category)}
+            </span>
             <span className="chart-legend-value">{formatCurrency(item.total)}</span>
           </div>
         ))}

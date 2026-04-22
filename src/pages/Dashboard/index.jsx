@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ExpensesChart from '../../components/finance/ExpensesChart';
 import SummaryCard from '../../components/finance/SummaryCard';
 import TransactionForm from '../../components/finance/TransactionForm';
@@ -15,7 +16,7 @@ export default function Dashboard() {
     return [
       {
         id: 1,
-        title: 'Salario',
+        title: 'Salário',
         amount: 4000,
         type: 'income',
         category: 'salario',
@@ -98,6 +99,7 @@ export default function Dashboard() {
     .reduce((total, transaction) => total + transaction.amount, 0);
 
   const balance = incomeTotal - expenseTotal;
+
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesType =
       typeFilter === 'all' || transaction.type === typeFilter;
@@ -109,6 +111,7 @@ export default function Dashboard() {
 
     return matchesType && matchesCategory && matchesSearch;
   });
+
   const expensesByCategory = Object.entries(
     transactions
       .filter((transaction) => transaction.type === 'expense')
@@ -136,6 +139,26 @@ export default function Dashboard() {
           <SummaryCard title="Saldo" amount={balance} />
           <SummaryCard title="Entradas" amount={incomeTotal} />
           <SummaryCard title="Despesas" amount={expenseTotal} />
+        </div>
+      </section>
+
+      <section
+        className="dashboard-section dashboard-highlight"
+        aria-labelledby="goals-section-title"
+      >
+        <div className="section-header">
+          <div>
+            <h2 id="goals-section-title" className="section-title">
+              Metas financeiras
+            </h2>
+            <p className="section-description">
+              Organize seus objetivos e acompanhe os valores que você quer
+              alcançar.
+            </p>
+          </div>
+          <Link to="/metas" className="btn btn-secondary">
+            Abrir metas
+          </Link>
         </div>
       </section>
 
@@ -182,7 +205,7 @@ export default function Dashboard() {
             value={typeFilter}
             onChange={(event) => setTypeFilter(event.target.value)}
           >
-            <option value="all">all</option>
+            <option value="all">Todos os tipos</option>
             <option value="income">Entrada</option>
             <option value="expense">Despesa</option>
           </select>
@@ -190,13 +213,13 @@ export default function Dashboard() {
             value={categoryFilter}
             onChange={(event) => setCategoryFilter(event.target.value)}
           >
-            <option value="all">all</option>
-            <option value="alimentacao">alimentação</option>
-            <option value="moradia">moradia</option>
-            <option value="transporte">transporte</option>
-            <option value="lazer">lazer</option>
-            <option value="salario">salário</option>
-            <option value="outros">outros</option>
+            <option value="all">Todas as categorias</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="moradia">Moradia</option>
+            <option value="transporte">Transporte</option>
+            <option value="lazer">Lazer</option>
+            <option value="salario">Salário</option>
+            <option value="outros">Outros</option>
           </select>
         </div>
         <div className="transactions-list">

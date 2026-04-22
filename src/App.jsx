@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/layout/Header';
-import Dashboard from './pages/Dashboard';
 import About from './pages/About';
+import Dashboard from './pages/Dashboard';
+import Metas from './pages/Metas/metas';
 
 function NotFound() {
   return <h1>Página não encontrada</h1>;
@@ -33,6 +34,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
+        <Route path="/metas" element={<Metas />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

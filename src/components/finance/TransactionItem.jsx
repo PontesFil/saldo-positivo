@@ -1,4 +1,5 @@
 import React from 'react';
+import formatCategoryLabel from '../../utils/formatCategoryLabel';
 import formatCurrency from '../../utils/formatCurrency';
 
 export default function TransactionItem({
@@ -17,7 +18,7 @@ export default function TransactionItem({
     <article className={`transaction-item ${articleClass}`}>
       <div className="transaction-content">
         <h3 className="transaction-title">{title}</h3>
-        <p className="transaction-category">{category}</p>
+        <p className="transaction-category">{formatCategoryLabel(category)}</p>
       </div>
       <div className="transaction-meta">
         <p className="transaction-amount">{formatCurrency(amount)}</p>
@@ -33,7 +34,11 @@ export default function TransactionItem({
         >
           Editar
         </button>
-        <button className="btn btn-delete" type="button" onClick={() => onDelete(id)}>
+        <button
+          className="btn btn-delete"
+          type="button"
+          onClick={() => onDelete(id)}
+        >
           Excluir
         </button>
       </div>

@@ -75,6 +75,8 @@ export default function TransactionForm({
           <input
             id="transaction-title"
             type="text"
+            required
+            placeholder="Ex: Mercado do mês"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
@@ -82,12 +84,20 @@ export default function TransactionForm({
 
         <div className="form-field">
           <label htmlFor="transaction-amount">Valor</label>
-          <input
-            id="transaction-amount"
-            type="number"
-            value={amount}
-            onChange={(event) => setAmount(event.target.value)}
-          />
+          <div className="currency-field">
+            <span className="currency-prefix">R$</span>
+            <input
+              id="transaction-amount"
+              type="number"
+              inputMode="decimal"
+              min="0"
+              step="0.01"
+              required
+              placeholder="0,00"
+              value={amount}
+              onChange={(event) => setAmount(event.target.value)}
+            />
+          </div>
         </div>
 
         <div className="form-field">
@@ -109,12 +119,12 @@ export default function TransactionForm({
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           >
-            <option value="alimentacao">alimentação</option>
-            <option value="moradia">moradia</option>
-            <option value="transporte">transporte</option>
-            <option value="lazer">lazer</option>
-            <option value="salario">salário</option>
-            <option value="outros">outros</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="moradia">Moradia</option>
+            <option value="transporte">Transporte</option>
+            <option value="lazer">Lazer</option>
+            <option value="salario">Salário</option>
+            <option value="outros">Outros</option>
           </select>
         </div>
 

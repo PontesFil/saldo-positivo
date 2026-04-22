@@ -10,6 +10,7 @@ export default function Header({ isDarkMode, onToggleTheme }) {
           <img src={logo} alt="Saldo+" />
         </Link>
         <NavLink to="/">Visão geral</NavLink>
+        <NavLink to="/metas">Metas</NavLink>
         <NavLink to="/about">Sobre</NavLink>
         <button
           className="btn btn-secondary theme-toggle theme-toggle-btn"
