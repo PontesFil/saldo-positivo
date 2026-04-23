@@ -5,6 +5,7 @@ import SummaryCard from '../../components/finance/SummaryCard';
 import TransactionForm from '../../components/finance/TransactionForm';
 import TransactionItem from '../../components/finance/TransactionItem';
 import DashboardSidebar from '../../components/layout/DashboardSidebar';
+import generateTransactionsCsv from '../../utils/generateTransactionsCsv';
 
 export default function Dashboard() {
   const [transactions, setTransactions] = useState(() => {
@@ -92,6 +93,21 @@ export default function Dashboard() {
     setEditingTransaction(null);
   }
 
+  function handleExportCsv() {
+    const blob = new Blob([transactionsCsv], {
+      type: 'text/csv;charset=utf-8;',
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = 'transacoes.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
   const incomeTotal = transactions
     .filter((transaction) => transaction.type === 'income')
     .reduce((total, transaction) => total + transaction.amount, 0);
@@ -101,6 +117,7 @@ export default function Dashboard() {
     .reduce((total, transaction) => total + transaction.amount, 0);
 
   const balance = incomeTotal - expenseTotal;
+  const transactionsCsv = generateTransactionsCsv(transactions);
 
   const filteredTransactions = transactions.filter((transaction) => {
     const matchesType =
@@ -206,38 +223,52 @@ export default function Dashboard() {
             className="dashboard-section transactions-section"
             aria-labelledby="transactions-title"
           >
-            <h2 id="transactions-title" className="section-title">
-              Transações
-            </h2>
-            <div className="filters-row">
-              <input
-                type="text"
-                placeholder="Buscar transação"
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-              />
-              <select
-                value={typeFilter}
-                onChange={(event) => setTypeFilter(event.target.value)}
-              >
-                <option value="all">Todos os tipos</option>
-                <option value="income">Entrada</option>
-                <option value="expense">Despesa</option>
-              </select>
-              <select
-                value={categoryFilter}
-                onChange={(event) => setCategoryFilter(event.target.value)}
-              >
-                <option value="all">Todas as categorias</option>
-                <option value="alimentacao">Alimentação</option>
-                <option value="moradia">Moradia</option>
-                <option value="transporte">Transporte</option>
-                <option value="lazer">Lazer</option>
-                <option value="salario">Salário</option>
-                <option value="outros">Outros</option>
-              </select>
+            <div className="section-header section-header--transactions">
+              <h2 id="transactions-title" className="section-title">
+                Transações
+              </h2>
+            </div>
+            <div className="transactions-toolbar">
+              <div className="filters-row">
+                <input
+                  type="text"
+                  placeholder="Buscar transação"
+                  value={searchTerm}
+                  onChange={(event) => setSearchTerm(event.target.value)}
+                />
+                <select
+                  value={typeFilter}
+                  onChange={(event) => setTypeFilter(event.target.value)}
+                >
+                  <option value="all">Todos os tipos</option>
+                  <option value="income">Entrada</option>
+                  <option value="expense">Despesa</option>
+                </select>
+                <select
+                  value={categoryFilter}
+                  onChange={(event) => setCategoryFilter(event.target.value)}
+                >
+                  <option value="all">Todas as categorias</option>
+                  <option value="alimentacao">Alimentação</option>
+                  <option value="moradia">Moradia</option>
+                  <option value="transporte">Transporte</option>
+                  <option value="lazer">Lazer</option>
+                  <option value="salario">Salário</option>
+                  <option value="outros">Outros</option>
+                </select>
+              </div>
+              <div className="section-actions">
+                <button
+                  className="btn btn-secondary"
+                  type="button"
+                  onClick={handleExportCsv}
+                >
+                  Exportar CSV
+                </button>
+              </div>
             </div>
             <div className="transactions-list">
+              <span hidden>{transactionsCsv}</span>
               {[...filteredTransactions]
                 .sort((firstTransaction, secondTransaction) => {
                   return secondTransaction.id - firstTransaction.id;
