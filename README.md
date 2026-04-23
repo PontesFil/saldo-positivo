@@ -16,6 +16,7 @@ Aplicação web de controle financeiro pessoal desenvolvida em React, com foco e
 - filtros por tipo e categoria
 - busca por título
 - gráfico de despesas por categoria
+- exportação de transações em CSV
 - persistência com `localStorage`
 - dark mode com preferência salva no navegador
 - página de metas financeiras
@@ -76,6 +77,7 @@ src/
 - formulário de transações
 - gráfico de despesas por categoria
 - lista de transações com filtros
+- exportação de dados em CSV
 - navegação lateral interna por seções
 
 ### Metas
@@ -106,9 +108,10 @@ src/
 - uso de formulários controlados para criação e edição de dados
 - cálculo dinâmico de saldo, entradas, despesas e progresso de metas
 - persistência local com `localStorage`
-- uso de componentes reutilizáveis para cards, formulário, itens de lista e gráfico
+- uso de componentes reutilizáveis para cards, formulário, itens de lista, gráfico e navegação lateral
 - navegação com `React Router DOM`, incluindo ajuste de `basename` para GitHub Pages
 - construção de interface responsiva e dark mode usando apenas CSS puro
+- geração de CSV no cliente para exportação rápida de dados
 - organização visual inspirada em dashboards modernos, sem framework CSS
 
 ## Objetivo do projeto
